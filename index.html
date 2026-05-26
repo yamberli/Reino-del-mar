@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0F172A">
+  <meta name="description" content="Reino del Mar - Pescadería con productos del mar frescos, congelados, preparados y jugos vitamínicos. Calidad premium y frescura diaria.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Reino del Mar">
+  
+  <title>Reino del Mar - Pescadería Premium</title>
+  
+  <!-- Enlace al manifiesto de la PWA -->
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="./assets/images/icon.png">
+  <link rel="icon" type="image/png" href="./assets/images/favicon.png">
+  
+  <!-- Estilos CSS personalizados -->
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <!-- Encabezado de la Aplicación -->
+  <header class="app-header">
+    <div class="title-area">
+      <h1>Reino del Mar</h1>
+      <p>Frescura que llega a tu mesa</p>
+    </div>
+    <!-- Navegación de Escritorio -->
+    <nav class="desktop-nav">
+      <div class="nav-item active" data-screen="inicio">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+        </svg>
+        <span>Inicio</span>
+      </div>
+      <div class="nav-item" data-screen="catalogo">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+        </svg>
+        <span>Catálogo</span>
+      </div>
+      <div class="nav-item" data-screen="nosotros">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span>Nosotros</span>
+      </div>
+      <div class="nav-item" data-screen="promociones">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        <span>Promociones</span>
+      </div>
+      <div class="nav-item" data-screen="contactos">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+        </svg>
+        <span>Contactos</span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Contenedor Principal de Contenido (SPA) -->
+  <main class="app-content">
+
+    <!-- ==========================================
+         PANTALLA: INICIO (HOME)
+         ========================================== -->
+    <section id="screen-inicio" class="screen active">
+      <div class="hero-container">
+        <img src="https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?auto=format&fit=crop&w=1000&q=80" alt="Reino del Mar Banner" class="hero-image">
+        <div class="hero-overlay"></div>
+      </div>
+
+      <!-- Accesos Rápidos -->
+      <div class="quick-links">
+        <div class="link-card" data-goto="catalogo">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+          </svg>
+          <span>Productos</span>
+        </div>
+        <div class="link-card" data-goto="promociones">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          <span>Ofertas</span>
+        </div>
+        <div class="link-card" data-goto="contactos">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          <span>Ubicación</span>
+        </div>
+      </div>
+
+      <!-- Valores de la Empresa -->
+      <div class="values-section">
+        <h2 class="section-title">Nuestros Valores</h2>
+        
+        <div class="value-item">
+          <div class="value-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#10b981">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div class="value-text">
+            <strong>Calidad Premium:</strong> Seleccionamos lo mejor del mar para asegurar el estándar más alto.
+          </div>
+        </div>
+
+        <div class="value-item">
+          <div class="value-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#0ea5e9">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0a2 2 0 01-2 2H6a2 2 0 01-2-2m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5" />
+            </svg>
+          </div>
+          <div class="value-text">
+            <strong>Frescura Diaria:</strong> Productos frescos pescados de forma responsable todos los días.
+          </div>
+        </div>
+
+        <div class="value-item">
+          <div class="value-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#f59e0b">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <div class="value-text">
+            <strong>Confianza:</strong> Más de 10 años sirviendo con honestidad y cariño a nuestra comunidad.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PANTALLA: CATÁLOGO
+         ========================================== -->
+    <section id="screen-catalogo" class="screen">
+      <h2 class="section-title">Catálogo de Productos</h2>
+      
+      <!-- Fila de Filtros -->
+      <div class="filter-container" id="category-filters">
+        <div class="filter-pill active" data-category="Todos">Todos</div>
+        <div class="filter-pill" data-category="Fresco">Fresco</div>
+        <div class="filter-pill" data-category="Congelado">Congelado</div>
+        <div class="filter-pill" data-category="Preparados">Preparados</div>
+        <div class="filter-pill" data-category="Jugos">Jugos</div>
+      </div>
+
+      <!-- Grilla de Productos -->
+      <div class="products-grid" id="products-list">
+        <!-- Renderizado dinámico desde app.js -->
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PANTALLA: NOSOTROS
+         ========================================== -->
+    <section id="screen-nosotros" class="screen">
+      <div class="about-story-row">
+        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1000&q=80" alt="Nuestra Historia" class="about-hero">
+        <div class="about-story-text">
+          <h2 class="about-intro-title">El Reino del Mar</h2>
+          <p class="about-intro-text">
+            Nacimos con una pasión profunda por el océano y el deseo de llevar los sabores más frescos y auténticos a las mesas de nuestra comunidad. Durante más de 10 años, hemos construido relaciones sólidas con pescadores locales para asegurar que cada producto que ofrecemos cumpla con los más altos estándares de calidad.
+          </p>
+        </div>
+      </div>
+
+      <div class="about-cards-row">
+        <!-- Tarjeta: Misión -->
+        <div class="about-card">
+          <div class="about-card-header">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+            </svg>
+            <h3>Nuestra Misión</h3>
+          </div>
+          <div class="about-card-body">
+            Proveer productos del mar frescos, sostenibles y de primera calidad, brindando un servicio excepcional y fomentando una alimentación saludable en nuestra comunidad.
+          </div>
+        </div>
+
+        <!-- Tarjeta: Visión -->
+        <div class="about-card">
+          <div class="about-card-header">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+            <h3>Nuestra Visión</h3>
+          </div>
+          <div class="about-card-body">
+            Ser la pescadería líder y de mayor confianza en la región, reconocida por nuestro compromiso con la frescura, la innovación en nuestros preparados y el apoyo a la pesca local.
+          </div>
+        </div>
+
+        <!-- Tarjeta: Compromiso -->
+        <div class="about-card">
+          <div class="about-card-header">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+            <h3>Compromiso Local</h3>
+          </div>
+          <div class="about-card-body">
+            Trabajamos de la mano con proveedores locales y pescadores artesanales. Esto garantiza frescura y apoya la economía sostenible de la región.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PANTALLA: SERVICIOS / PROMOCIONES
+         ========================================== -->
+    <section id="screen-promociones" class="screen">
+      <h2 class="section-title">Nuestros Servicios</h2>
+      
+      <div class="services-grid">
+        <!-- Servicio 1 -->
+        <div class="service-card">
+          <div class="service-icon-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#0ea5e9">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3>Entrega Rápida</h3>
+          <p>Entregas a domicilio en toda la ciudad. Manteniendo la cadena de frío.</p>
+        </div>
+        <!-- Servicio 2 -->
+        <div class="service-card">
+          <div class="service-icon-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#10b981">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+          </div>
+          <h3>Retiro en Local</h3>
+          <p>Pide en línea y recoge tu pedido listo en nuestro local sin hacer filas.</p>
+        </div>
+        <!-- Servicio 3 -->
+        <div class="service-card">
+          <div class="service-icon-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#f59e0b">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h3>Reservas</h3>
+          <p>Asegura tus productos favoritos para eventos especiales o fines de semana.</p>
+        </div>
+        <!-- Servicio 4 -->
+        <div class="service-card">
+          <div class="service-icon-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#8b5cf6">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+            </svg>
+          </div>
+          <h3>Cliente VIP</h3>
+          <p>Únete a nuestro programa de lealtad y obtén descuentos exclusivos.</p>
+        </div>
+      </div>
+
+      <h2 class="section-title">Ofertas Especiales</h2>
+      <div class="promos-container" id="promotions-list">
+        <!-- Renderizado dinámico desde app.js -->
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PANTALLA: CONTACTOS
+         ========================================== -->
+    <section id="screen-contactos" class="screen">
+      <h2 class="section-title">Contáctanos</h2>
+      
+      <div class="contact-layout">
+        <!-- Panel Izquierdo: Información y mapa -->
+        <div class="contact-info-pane">
+          <div class="contact-info-block">
+            <div class="contact-info-item">
+              <div class="contact-icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#0ea5e9">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <div class="contact-item-details">
+                <h4>Dirección</h4>
+                <p>Av. del Pescador 123, Puerto Principal</p>
+              </div>
+            </div>
+            
+            <div class="contact-info-item">
+              <div class="contact-icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#10b981">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </div>
+              <div class="contact-item-details">
+                <h4>Teléfono</h4>
+                <p>+1 234 567 8900</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#f59e0b">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div class="contact-item-details">
+                <h4>Correo Electrónico</h4>
+                <p>hola@reinodelmar.com</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="social-links">
+            <a href="#" class="social-circle fb" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" width="24" height="24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </a>
+            <a href="#" class="social-circle ig" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" width="24" height="24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+              </svg>
+            </a>
+            <a href="#" class="social-circle wa" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" width="24" height="24">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.455L0 24zm6.59-4.846c1.6.95 3.197 1.45 4.817 1.451 5.393 0 9.778-4.383 9.781-9.774a9.715 9.715 0 00-2.87-6.885 9.72 9.72 0 00-6.892-2.85c-5.4 0-9.786 4.386-9.79 9.782-.001 1.77.462 3.5 1.342 5.025l-.995 3.634 3.722-.975zm11.367-7.705c-.3-.15-1.77-.875-2.045-.975-.276-.1-.477-.15-.677.15-.2.3-.775.975-.95 1.175-.175.2-.35.225-.65.075-.3-.15-1.265-.467-2.41-1.485-.89-.79-1.49-1.77-1.665-2.07-.175-.3-.02-.46.13-.61.135-.133.3-.35.45-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.677-1.633-.93-2.245-.244-.587-.492-.51-.677-.52-.172-.008-.371-.01-.57-.01-.2 0-.526.075-.802.375-.276.3-1.05 1.025-1.05 2.5s1.075 2.9 1.225 3.1c.15.2 2.11 3.224 5.112 4.525.715.31 1.273.495 1.71.635.717.227 1.37.195 1.885.118.574-.085 1.77-.724 2.02-1.425.25-.7.25-1.3 0-1.425-.075-.125-.275-.2-.575-.35z"/>
+              </svg>
+            </a>
+          </div>
+
+          <div class="map-wrapper">
+            <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=800&q=80" alt="Ubicación en Mapa" class="map-placeholder-img">
+            <div class="map-overlay">
+              <button class="btn-secondary" onclick="window.open('https://maps.google.com', '_blank')">Ver en Google Maps</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel Derecho: Formulario de mensaje -->
+        <div class="contact-form-pane">
+          <form class="form-box" id="contact-form" onsubmit="event.preventDefault();">
+            <h3>Envíanos un mensaje</h3>
+            <div class="form-group">
+              <label class="form-label" for="contact-name">Nombre</label>
+              <input type="text" id="contact-name" class="form-input" placeholder="Tu nombre completo" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-info">Correo / Teléfono</label>
+              <input type="text" id="contact-info" class="form-input" placeholder="¿Cómo te contactamos?" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-message">Mensaje</label>
+              <textarea id="contact-message" class="form-input" placeholder="Escribe tu mensaje aquí..." required></textarea>
+            </div>
+            <button type="submit" class="btn-submit" id="btn-submit-contact">Enviar Mensaje</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Barra de Navegación Inferior (Móvil) -->
+  <nav class="mobile-nav">
+    <div class="nav-item active" data-screen="inicio">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+      </svg>
+      <span>Inicio</span>
+    </div>
+    <div class="nav-item" data-screen="catalogo">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+      </svg>
+      <span>Catálogo</span>
+    </div>
+    <div class="nav-item" data-screen="nosotros">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <span>Nosotros</span>
+    </div>
+    <div class="nav-item" data-screen="promociones">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg>
+      <span>Promos</span>
+    </div>
+    <div class="nav-item" data-screen="contactos">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+      </svg>
+      <span>Contactos</span>
+    </div>
+  </nav>
+
+  <!-- Elemento Toast para Notificaciones -->
+  <div class="toast-msg" id="app-toast">Añadido al carrito</div>
+
+  <!-- Lógica de la Aplicación -->
+  <script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "Reino del Mar",
+  "short_name": "Reino del Mar",
+  "description": "Frescura que llega a tu mesa. Pescados y mariscos de alta calidad.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#F8FAFC",
+  "theme_color": "#0F172A",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./assets/images/favicon.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "./assets/images/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

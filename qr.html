@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QR Code – Reino del Mar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ocean-deep: #0a1628;
+      --ocean-mid:  #0f2a4a;
+      --ocean-teal: #0e7490;
+      --ocean-cyan: #06b6d4;
+      --ocean-light:#67e8f9;
+      --gold:       #f59e0b;
+      --gold-light: #fcd34d;
+      --white:      #f0f9ff;
+      --glass:      rgba(255,255,255,0.07);
+      --glass-border: rgba(255,255,255,0.15);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--ocean-deep);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+      overflow-x: hidden;
+    }
+
+    /* ─── Fondo animado ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(6,182,212,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% 90%, rgba(14,116,144,0.20) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .waves {
+      position: fixed;
+      bottom: 0; left: 0;
+      width: 100%; height: 200px;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .waves svg { width: 100%; height: 100%; }
+    .wave1 { animation: waveMove 8s linear infinite; }
+    .wave2 { animation: waveMove 12s linear infinite reverse; opacity: .5; }
+    @keyframes waveMove {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ─── Card principal ─── */
+    .card {
+      position: relative;
+      z-index: 1;
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 28px;
+      padding: 2.5rem 2.5rem 2rem;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
+      text-align: center;
+    }
+
+    /* ─── Logo / título ─── */
+    .brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .7rem;
+      margin-bottom: 1.6rem;
+    }
+    .brand-icon {
+      width: 48px; height: 48px;
+      background: linear-gradient(135deg, var(--ocean-cyan), var(--gold));
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      box-shadow: 0 4px 20px rgba(6,182,212,0.4);
+    }
+    .brand-text h1 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+    .brand-text span {
+      font-size: .75rem;
+      color: var(--ocean-light);
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ─── Input URL ─── */
+    .input-group {
+      margin-bottom: 1.6rem;
+      text-align: left;
+    }
+    .input-group label {
+      display: block;
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--ocean-light);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: .5rem;
+    }
+    .input-wrap {
+      display: flex;
+      gap: .5rem;
+    }
+    .input-wrap input {
+      flex: 1;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: .75rem 1rem;
+      color: var(--white);
+      font-size: .95rem;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      transition: border-color .25s, background .25s;
+    }
+    .input-wrap input::placeholder { color: rgba(255,255,255,0.3); }
+    .input-wrap input:focus {
+      border-color: var(--ocean-cyan);
+      background: rgba(6,182,212,0.08);
+    }
+    .btn-gen {
+      background: linear-gradient(135deg, var(--ocean-cyan), var(--ocean-teal));
+      border: none;
+      border-radius: 12px;
+      padding: .75rem 1.1rem;
+      color: #fff;
+      font-weight: 700;
+      font-size: .9rem;
+      cursor: pointer;
+      transition: transform .2s, box-shadow .2s;
+      white-space: nowrap;
+    }
+    .btn-gen:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(6,182,212,0.5);
+    }
+    .btn-gen:active { transform: scale(.97); }
+
+    /* ─── QR Box ─── */
+    .qr-wrapper {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.2rem;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .8rem;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4), 0 0 0 4px rgba(6,182,212,0.25);
+      transition: transform .3s;
+    }
+    .qr-wrapper:hover { transform: scale(1.02); }
+    #qrcode canvas, #qrcode img { display: block; border-radius: 8px; }
+
+    .qr-label {
+      font-size: .7rem;
+      font-weight: 700;
+      color: var(--ocean-teal);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ─── Mensaje placeholder ─── */
+    .placeholder-msg {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+      color: rgba(255,255,255,0.25);
+      padding: 1.5rem 0;
+      font-size: .9rem;
+    }
+    .placeholder-msg span { font-size: 2.5rem; }
+
+    /* ─── Botón descargar ─── */
+    .btn-download {
+      display: none;
+      margin-top: 1.4rem;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      border: none;
+      border-radius: 12px;
+      padding: .75rem 2rem;
+      color: #1a1a1a;
+      font-weight: 700;
+      font-size: .95rem;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: transform .2s, box-shadow .2s;
+      gap: .4rem;
+    }
+    .btn-download:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(245,158,11,0.5);
+    }
+    .btn-download.visible { display: inline-flex; align-items: center; }
+
+    /* ─── URL actual ─── */
+    .current-url {
+      display: none;
+      margin-top: .8rem;
+      font-size: .75rem;
+      color: var(--ocean-light);
+      word-break: break-all;
+      opacity: .8;
+    }
+    .current-url.visible { display: block; }
+
+    /* ─── Footer ─── */
+    .footer {
+      position: relative; z-index: 1;
+      margin-top: 1.5rem;
+      font-size: .72rem;
+      color: rgba(255,255,255,0.2);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Olas decorativas -->
+  <div class="waves" aria-hidden="true">
+    <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+      <path class="wave1" fill="rgba(6,182,212,0.08)"
+        d="M0,100 C360,160 720,40 1080,100 C1260,130 1350,60 1440,100 L1440,200 L0,200 Z
+           M1440,100 C1080,40 720,160 360,100 C180,70 90,140 0,100 L0,200 L1440,200 Z"/>
+      <path class="wave2" fill="rgba(14,116,144,0.10)"
+        d="M0,120 C400,60 800,180 1200,100 C1320,80 1380,140 1440,120 L1440,200 L0,200 Z
+           M1440,120 C1040,180 640,60 240,140 C120,160 60,100 0,120 L0,200 L1440,200 Z"/>
+    </svg>
+  </div>
+
+  <div class="card">
+
+    <!-- Marca -->
+    <div class="brand">
+      <div class="brand-icon">🐟</div>
+      <div class="brand-text">
+        <h1>Reino del Mar</h1>
+        <span>Generador de QR</span>
+      </div>
+    </div>
+
+    <!-- Input URL -->
+    <div class="input-group">
+      <label for="urlInput">URL del sitio web</label>
+      <div class="input-wrap">
+        <input
+          type="url"
+          id="urlInput"
+          placeholder="https://tu-sitio.netlify.app"
+          autocomplete="off"
+        />
+        <button class="btn-gen" id="btnGenerar" onclick="generarQR()">
+          ⚡ Generar
+        </button>
+      </div>
+    </div>
+
+    <!-- Área QR -->
+    <div id="qrArea">
+      <div class="placeholder-msg" id="placeholderMsg">
+        <span>🔲</span>
+        <p>Ingresa una URL y presiona <strong>Generar</strong></p>
+      </div>
+    </div>
+
+    <!-- Botón descarga -->
+    <button class="btn-download" id="btnDescargar" onclick="descargarQR()">
+      ⬇️ &nbsp;Descargar QR (PNG)
+    </button>
+
+    <!-- URL actual -->
+    <p class="current-url" id="currentUrl"></p>
+
+  </div>
+
+  <p class="footer">Reino del Mar · QR Generator</p>
+
+  <script>
+    let qrInstance = null;
+
+    function generarQR() {
+      const input = document.getElementById('urlInput');
+      const url = input.value.trim();
+
+      if (!url) {
+        input.style.borderColor = '#ef4444';
+        input.focus();
+        setTimeout(() => input.style.borderColor = '', 1200);
+        return;
+      }
+
+      const area = document.getElementById('qrArea');
+      const placeholder = document.getElementById('placeholderMsg');
+      const btnDesc = document.getElementById('btnDescargar');
+      const currentUrl = document.getElementById('currentUrl');
+
+      // Limpiar QR anterior
+      area.innerHTML = '';
+
+      // Crear contenedor blanco
+      const wrapper = document.createElement('div');
+      wrapper.className = 'qr-wrapper';
+
+      const label = document.createElement('p');
+      label.className = 'qr-label';
+      label.textContent = 'Escanea para visitar';
+
+      const qrDiv = document.createElement('div');
+      qrDiv.id = 'qrcode';
+
+      wrapper.appendChild(label);
+      wrapper.appendChild(qrDiv);
+      area.appendChild(wrapper);
+
+      // Generar QR
+      qrInstance = new QRCode(qrDiv, {
+        text: url,
+        width: 220,
+        height: 220,
+        colorDark: '#0a1628',
+        colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.H
+      });
+
+      // Mostrar botón descargar y URL
+      btnDesc.classList.add('visible');
+      currentUrl.textContent = '🔗 ' + url;
+      currentUrl.classList.add('visible');
+    }
+
+    function descargarQR() {
+      setTimeout(() => {
+        const canvas = document.querySelector('#qrcode canvas');
+        if (!canvas) {
+          // fallback para img
+          const img = document.querySelector('#qrcode img');
+          if (img) {
+            const link = document.createElement('a');
+            link.href = img.src;
+            link.download = 'qr-reino-del-mar.png';
+            link.click();
+          }
+          return;
+        }
+        const link = document.createElement('a');
+        link.download = 'qr-reino-del-mar.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      }, 100);
+    }
+
+    // Generar con Enter
+    document.getElementById('urlInput').addEventListener('keydown', e => {
+      if (e.key === 'Enter') generarQR();
+    });
+  </script>
+
+</body>
+</html>
