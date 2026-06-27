@@ -843,7 +843,7 @@ textarea.form-input {
   position: fixed;
   bottom: 80px;
   left: 50%;
-  transform: translateX(-50%) translateY(100px);
+  transform: translateX(-50%) translateY(150px);
   opacity: 0;
   visibility: hidden;
   background-color: var(--bg-header);
@@ -854,7 +854,7 @@ textarea.form-input {
   font-weight: 600;
   box-shadow: var(--shadow-lg);
   z-index: 10000;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), visibility 0.3s;
   border: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
   pointer-events: none;
